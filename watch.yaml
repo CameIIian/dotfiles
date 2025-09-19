@@ -1,0 +1,129 @@
+# looking to make changes?
+# drop me in ~/.config/wlxoverlay/watch.yaml
+#
+
+width: 0.115
+
+size: [400, 200]
+
+elements:
+  # background panel
+  - type: Panel
+    rect: [0, 0, 400, 200]
+    corner_radius: 60
+    bg_color: "#333D54"
+
+  - type: Button
+    rect: [24, 160, 60, 36]
+    corner_radius: 6
+    font_size: 16
+    fg_color: "#333D54"
+    bg_color: "#FFCBC8"
+    text: "Conf"
+    click_up: # destroy if exists, otherwise create
+      - type: Window
+        target: settings
+        action: ShowUi # only triggers if not exists
+      - type: Window
+        target: settings
+        action: Destroy # only triggers if exists since before current frame
+    right_up:
+      - type: Window
+        target: settings
+        action: ShowUi
+      - type: Window
+        target: settings
+        action: Destroy
+    middle_up:
+      - type: Window
+        target: settings
+        action: ShowUi
+      - type: Window
+        target: settings
+        action: Destroy
+
+  # Keyboard button
+  - type: Button
+    rect: [88, 160, 60, 36]
+    corner_radius: 6
+    font_size: 16
+    fg_color: "#333D54"
+    bg_color: "#D38D8B"
+    text: Kbd
+    click_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleVisible
+    right_up:
+      - type: Overlay
+        target: "kbd"
+        action: Reset
+    middle_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleImmovable
+    scroll_up:
+      - type: Overlay
+        target: "kbd"
+        action:
+          Opacity: { delta: 0.025 }
+    scroll_down:
+      - type: Overlay
+        target: "kbd"
+        action:
+          Opacity: { delta: -0.025 }
+
+  # bottom row, of keyboard + overlays
+  - type: OverlayList
+    rect: [150, 158, 228, 39]
+    corner_radius: 6
+    font_size: 16
+    fg_color: "#333D54"
+    bg_color: "#FCECEB"
+    layout: Horizontal
+    click_up: ToggleVisible
+    right_up: Reset
+    middle_up: ToggleImmovable
+    scroll_up:
+      Opacity: { delta: 0.025 }
+    scroll_down:
+      Opacity: { delta: -0.025 }
+
+  # local clock
+  - type: Label
+    rect: [52, 150, 350, 200]
+    corner_radius: 6
+    font_size: 96 # Use 32 for 12-hour time
+    fg_color: "#FCECEB"
+    source: Clock
+    format: "%H:%M" # 23:59
+
+  # local date
+  - type: Label
+    rect: [15, 45, 200, 50]
+    corner_radius: 6
+    font_size: 24
+    fg_color: "#FFCBC8"
+    source: Clock
+    format: "%x" # local date representation
+
+  # local day-of-week
+  - type: Label
+    rect: [155, 45, 200, 50]
+    corner_radius: 6
+    font_size: 24
+    fg_color: "#FFCBC8"
+    source: Clock
+    format: "%A" # Tuesday
+
+  # batteries
+  - type: BatteryList
+    rect: [15, 70, 40, 100]
+    corner_radius: 6
+    font_size: 16
+    fg_color: "#FCECEB"
+    fg_color_low: "#D38D8B"
+    fg_color_charging: "#FFCBC8"
+    num_devices: 9
+    layout: Vertical
+    low_threshold: 20
