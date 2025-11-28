@@ -89,7 +89,7 @@ source ~/.zsh_aliases
 . "$HOME/.cargo/env"
 
 # pixiの読み込み
-export PATH="/home/yokogawa/.pixi/bin:$PATH"
+export PATH="$HOME/.pixi/bin:$PATH"
 
 # pyenvの設定
 export PYENV_ROOT="$HOME/.pyenv"
