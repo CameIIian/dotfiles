@@ -1,0 +1,120 @@
+# 実行不可の際に終了する
+[ -z "$PS1" ] && return
+
+# dotファイルの編集
+alias zshrc='vi ~/.zshrc'
+alias zsh_aliases='vi ~/.zsh_aliases'
+
+# 確認の追加
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+### 元コマンドのアルファベット順
+# btop - top代替
+alias top='btop'
+
+alias c='clear'
+
+alias d='docker'
+
+# duf - df代替
+alias df='duf'
+
+# eza - ls代替
+alias l=' eza -F --icons --group-directories-first'
+alias ls='eza -F --icons --group-directories-first'
+alias sl='eza -F --icons --group-directories-first'
+alias ll='eza -alhF --icons --group-directories-first'
+alias lr='eza -alhF -R -L 2 --icons --group-directories-first --absolute on'
+alias ld='eza -alhD --icons --group-directories-first'
+alias lf='eza -alhfF --icons --group-directories-first'
+alias t='tree'
+alias tree='eza -alhF -T -L 2 --icons'
+
+# fd-find - find代替
+alias find='fdfind'
+alias fd='fdfind'
+
+# jn - インタラクティブなjq
+alias jn='jnv'
+
+alias m='mkdir'
+
+alias ln='ln -srnf'
+
+# nvtop - nVidia用gpu版top
+alias ntop='nvtop'
+
+# nvim
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias nano='nvim'
+alias e='nvim'
+alias ed='nvim'
+alias edit='nvim'
+
+alias o='open'
+
+alias p='python'
+alias pp='pip'
+
+# ripgrep - grep代替
+alias grep='rg -p'
+alias g='grep'
+alias -g G='| g'
+
+alias s='ssh'
+
+# tldr - manの短縮版
+alias h='tldr'
+
+# xsel - コマンドからコピー
+alias clip='xsel --clipboard --input'
+alias -g C='| clip'
+
+### 圧縮系
+alias zip='zip'
+alias unzip='unar'
+alias tgz='tar -czvf'
+alias txz='tar -cJvf'
+alias untar='tar -xvf'
+
+### 画像/映像系
+alias yt='~/.local/bin/yt-dlp -N 4 -P ~/Videos'
+alias ytw='~/.local/bin/yt-dlp -N 4 -P ~/Music -f bestaudio -x --audio-format mp3 --audio-quality 3'
+alias fs='flameshot gui'
+alias ff='ffmpeg -i'
+ff2mov(){ ffmpeg -i $1 -c:v dnxhd -profile:v dnxhr_sq -pix_fmt yuv420p -c:a pcm_s16le $2 }
+
+# VRC
+alias vrc='~/.shells/.vrc.sh'
+
+alias alcom='~/Applications/alcom-1.1.4-x86_64.AppImage'
+alias wlx='~/Applications/WlxOverlay-S-v25.4.2-x86_64.AppImage'
+
+# shell呼び出し
+alias enableVirtualAudio='~/.shells/.enableVirtualAudio.sh'
+alias update='~/.shells/.update.sh'
+alias sendPort='~/.shells/.sendPort.sh'
+
+### path系
+alias -g vrcdir='~/.steam/steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/AppData/LocalLow/VRChat/VRChat'
+alias -g vscodir='~/Documents/VSCode/'
+alias -g obsidir='~/Dropbox/Obsidian/'
+
+# .[1-9] - 親ディレクトリの指定
+alias -g '.1'='../'
+alias -g '.2'='../..'
+alias -g '.3'='../../..'
+alias -g '.4'='../../../..'
+alias -g '.5'='../../../../..'
+alias -g '.6'='../../../../../..'
+alias -g '.7'='../../../../../../..'      
+alias -g '.8'='../../../../../../../..'      
+alias -g '.9'='../../../../../../../../..'      
+
+### suffix alias
+# ./foo.py のように実行した際に使用するツールを指定
+alias -s py='python'
