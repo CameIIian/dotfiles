@@ -8,3 +8,5 @@ cp .zsh* ~/
 ```
 cp -r wayvr ~/.config/
 ```
+3. alcom template\
+ After launching ALCOM, can import from Packages & Templates > Templates > import Template
