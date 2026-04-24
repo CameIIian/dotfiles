@@ -1,0 +1,84 @@
+# =========================
+# Common RC (bash/zsh shared)
+# =========================
+
+# 非インタラクティブシェルでは何もしない
+[ -z "$PS1" ] && return
+
+# -------------------------
+# aliasの読み込み
+# -------------------------
+if [ -f "$HOME/.aliases" ]; then
+    source "$HOME/.aliases"
+fi
+
+# -------------------------
+# History (bash/zsh共通)
+# -------------------------
+export HISTSIZE=1000
+
+# zshとbashで変数名が違う
+if [ -n "$ZSH_VERSION" ]; then
+    export SAVEHIST=1000
+else
+    export HISTFILESIZE=1000
+fi
+
+# -------------------------
+# Custom PATH追加
+# -------------------------
+
+add_path() {
+    case ":$PATH:" in
+        *":$1:"*) ;;  # すでに含まれている場合は何もしない
+        *) PATH="$1:$PATH" ;;
+    esac
+}
+
+# ~/Applications
+[ -d "$HOME/Applications" ] && add_path "$HOME/Applications"
+
+# ~/.shells
+[ -d "$HOME/.shells" ] && add_path "$HOME/.shells"
+
+export PATH
+
+# -------------------------
+# cargoの読み込み
+# -------------------------
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
+
+# -------------------------
+# pixi
+# -------------------------
+if [ -d "$HOME/.pixi/bin" ]; then
+    export PATH="$HOME/.pixi/bin:$PATH"
+fi
+
+# -------------------------
+# pyenv
+# -------------------------
+if [ -d "$HOME/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+
+    if command -v pyenv >/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+    else
+        export PATH="$PYENV_ROOT/bin:$PATH"
+        if command -v pyenv >/dev/null 2>&1; then
+            eval "$(pyenv init -)"
+        fi
+    fi
+fi
+
+# -------------------------
+# nvm (Node.js)
+# -------------------------
+if [ -d "$HOME/.nvm" ]; then
+    export NVM_DIR="$HOME/.nvm"
+
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+fi

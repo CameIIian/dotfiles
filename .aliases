@@ -1,0 +1,162 @@
+# =========================
+# Aliases (bash/zsh shared)
+# =========================
+
+# 非インタラクティブなら終了
+[ -z "$PS1" ] && return
+
+has() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# -------------------------
+# dotファイル編集
+# -------------------------
+alias bashrc='vi ~/.bashrc'
+alias zshrc='vi ~/.zshrc'
+alias rc='vi ~/rc'
+alias aliases='vi ~/.aliases'
+
+# -------------------------
+# 安全系
+# -------------------------
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+# -------------------------
+# 基本コマンド置き換え
+# -------------------------
+if has btop; then
+    alias top='btop'
+else
+    alias top='top'
+fi
+
+alias c='clear'
+alias d='docker'
+
+# duf - df代替
+alias df='duf'
+
+# eza - ls代替
+# eza / ls
+if has eza; then
+    alias l=' eza -F --icons --group-directories-first'
+    alias ls='eza -F --icons --group-directories-first'
+    alias sl='eza -F --icons --group-directories-first'
+    alias ll='eza -alhF --icons --group-directories-first'
+    alias lr='eza -alhF -R -L 2 --icons --group-directories-first --absolute on'
+    alias ld='eza -alhD --icons --group-directories-first'
+    alias lf='eza -alhfF --icons --group-directories-first'
+    alias tree='eza -alhF -T -L 2 --icons'
+else
+    alias l=' ls -F --color=auto'
+    alias ls='ls -F --color=auto'
+    alias sl='ls -F --color=auto'
+    alias ll='ls -alhF'
+fi
+
+# fd-find - find代替
+if has fdfind; then
+    alias find='fdfind'
+    alias fd='fdfind'
+elif has fd; then
+    alias find='fd'
+    alias fd='fd'
+else
+    alias fd='find'
+fi
+
+# jn - インタラクティブなjq
+alias jn='jnv'
+
+alias m='mkdir'
+alias ln='ln -srnf'
+alias n='npm'
+alias ntop='nvtop'
+
+if has nvim; then
+    alias v='nvim'
+    alias vi='nvim'
+    alias vim='nvim'
+    alias nano='nvim'
+    alias e='nvim'
+    alias ed='nvim'
+    alias edit='nvim'
+elif has vi; then
+    alias v='vi'
+    alias e='vi'
+    alias ed='vi'
+    alias edit='vi'
+fi
+
+alias o='open'
+
+alias p='python'
+alias pp='pip'
+
+# ripgrep - grep代替
+if has rg; then
+    alias grep='rg -p'
+    alias g='rg -p'
+else
+    alias grep='grep --color=auto'
+    alias g='grep --color=auto'
+fi
+
+alias s='ssh'
+alias h='tldr'
+
+# xsel - コマンドからコピー
+alias clip='xsel --clipboard --input'
+
+### 圧縮系
+if has unar; then
+    alias unzip='unar'
+else
+    alias unzip='unzip'
+fi
+alias tgz='tar -czvf'
+alias txz='tar -cJvf'
+alias untar='tar -xvf'
+
+### 画像/映像系
+alias yt='~/.local/bin/yt-dlp -N 4 -P ~/Videos'
+alias ytw='~/.local/bin/yt-dlp -N 4 -P ~/Music -f bestaudio -x --audio-format mp3 --audio-quality 3'
+alias fs='flameshot gui'
+alias ff='ffmpeg -i'
+ff2mov() {
+    ffmpeg -i $1 -c:v dnxhd -profile:v dnxhr_sq -pix_fmt yuv420p -c:a pcm_s16le $2
+}
+
+# VRC
+alias wayvr='~/Applications/WayVR-v26.1.2-x86_64.AppImage'
+alias slimevr='flatpak run dev.slimevr.SlimeVR'
+
+# -------------------------
+# zsh専用
+# -------------------------
+if [ -n "$ZSH_VERSION" ]; then
+    # グローバルalias
+    alias -g G='| g'
+    alias -g C='| clip'
+
+    # path
+    alias -g vrcPictures='~/.steam/steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/AppData/LocalLow/VRChat/VRChat'
+    alias -g vscodir='~/Documents/VSCode/'
+    alias -g obsidir='~/Dropbox/Obsidian/'
+
+    alias -g '.1'='../'
+    alias -g '.2'='../..'
+    alias -g '.3'='../../..'
+    alias -g '.4'='../../../..'
+    alias -g '.5'='../../../../..'
+    alias -g '.6'='../../../../../..'
+    alias -g '.7'='../../../../../../..'      
+    alias -g '.8'='../../../../../../../..'      
+    alias -g '.9'='../../../../../../../../..'      
+
+    # suffix alias
+    alias -s py='python'
+fi

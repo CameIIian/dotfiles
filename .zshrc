@@ -1,4 +1,30 @@
 ### begin p10k/oh-my-zsh
+if [ -n "$ZSH_VERSION" ]; then
+  [[ -o interactive ]] || return
+
+  if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Oh My Zsh not found. Installing..."
+
+    if command -v curl >/dev/null 2>&1 && command -v git >/dev/null 2>&1; then
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+      git clone --depth=1 \
+        https://github.com/romkatv/powerlevel10k.git \
+        "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
+      git clone \
+        https://github.com/zsh-users/zsh-autosuggestions \
+        "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+
+      git clone \
+        https://github.com/zsh-users/zsh-syntax-highlighting.git \
+        "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+    else
+      echo "curl and git are required to install Oh My Zsh."
+    fi
+  fi
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -70,7 +96,6 @@ source $ZSH/oh-my-zsh.sh
 ### end p10k/oh-my-zsh
 
 ### begin options
-HISTSIZE=1000               # ヒストリに保存するコマンド数
 SAVEHIST=1000               # ヒストリファイルに保存するコマンド数
 setopt hist_ignore_all_dups # 重複するコマンド行は古い方を削除。
 setopt hist_ignore_dups     # 直前と同じコマンドラインはヒストリに追加しない。
@@ -81,21 +106,14 @@ setopt correct              # タイポした際に聞き直す。
 # ctrl Rでヒストリ検索
 bindkey ^R history-incremental-search-backward
 
-# aliasの読み込み
-[ -z "$PS1" ] && return
-source ~/.zsh_aliases
+# shell共通設定のロード
+[ -f "$HOME/rc" ] && source "$HOME/rc"
 
-# cargoの読み込み
-. "$HOME/.cargo/env"
-
-# pixiの読み込み
-export PATH="$HOME/.pixi/bin:$PATH"
-
-# pyenvの設定
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# nvcc path
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ### end options
 
 # p10kテーマの適用
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
