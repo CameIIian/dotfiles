@@ -1,0 +1,9 @@
+#!/usr/bin/zsh
+flatpak run dev.slimevr.SlimeVR&
+~/Applications/slimevr-wrangler&
+sleep 5
+~/Applications/VRCX.AppImage&
+sleep 5
+flatpak run io.github.wivrn.wivrn&
+sleep 5
+steam steam://rungameid/438100&

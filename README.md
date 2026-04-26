@@ -1,14 +1,19 @@
 ## my dotfiles
-1. shell dotfiles
+1. shell dotfiles\
  .zshrc (.bashrc) & rc & .aliases
 
-2. WayVR
+2. .shells
+```
+cp -r .shells ~/
+```
+
+3. WayVR
 ```
 cp -r wayvr ~/.config/
 ```
 
-3. alcom template\
+4. alcom template\
  After launching ALCOM, can import from Packages & Templates > Templates > import Template
 
-4. playlist
+5. playlist
  Import using an app that opens .m3a files

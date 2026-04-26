@@ -1,0 +1,25 @@
+#! /usr/bin/zsh
+port="19132"
+protocol="udp"
+
+# select server
+echo "開放するサーバを選択"
+echo "1) 19132 BE (default)"
+echo "2) 25565 Java"
+echo "3) 24872 Azahar"
+
+read "choice?(1-3) >>> "
+
+case $choice in
+	2)
+		port="25565"
+		protocol="tcp"
+		;;
+	3)
+        port="24872"
+		;;
+	*)
+		;;
+esac
+
+ownserver --endpoint "${port}"/"${protocol}"

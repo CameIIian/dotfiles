@@ -1,0 +1,6 @@
+#!/usr/bin/zsh
+~/Applications/VRCX.AppImage&
+sleep 5
+flatpak run io.github.wivrn.wivrn&
+sleep 5
+steam steam://rungameid/438100
