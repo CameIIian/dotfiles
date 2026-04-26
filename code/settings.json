@@ -1,0 +1,78 @@
+{
+    // ===== テーマ =====
+    "workbench.colorTheme": "Catppuccin Mocha",
+
+    // ===== フォント =====
+    "editor.fontSize": 14,
+    "editor.lineHeight": 20,
+
+    "terminal.integrated.fontSize": 12,
+
+    "editor.fontLigatures": true,
+    "editor.renderControlCharacters": true,
+
+    // ===== 整形 =====
+    "editor.tabSize": 4,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+
+    // ===== サイドバー =====
+    "breadcrumbs.enabled": true,
+    "explorer.compactFolders": false,
+    "workbench.tree.indent": 16,
+
+    "terminal.integrated.defaultProfile.linux": "bash",
+
+    // ===== Git =====
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+
+    // ===== Copilot 一部無効化 =====
+    "editor.inlineSuggest.enabled": true,
+    "[markdown]": {
+        "editor.inlineSuggest.enabled": false
+    },
+    "[plaintext]": {
+        "editor.inlineSuggest.enabled": false
+    },
+    "[shellscript]": {
+        "editor.inlineSuggest.enabled": false
+    },
+    "[powershell]": {
+        "editor.inlineSuggest.enabled": false
+    },
+    "[json]": {
+        "editor.inlineSuggest.enabled": false
+    },
+    "[yaml]": {
+        "editor.inlineSuggest.enabled": false
+    },
+    "[xml]": {
+        "editor.inlineSuggest.enabled": false
+    },
+
+        "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "html": false,
+        "json": false,
+        "yaml": false,
+        "xml": false,
+        "shellscript": false,
+        "powershell": false
+    },
+
+    // ===== Python + Ruff =====
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "always",
+            "source.organizeImports.ruff": "always"
+        }
+    }
+}
+

@@ -7,13 +7,7 @@
 cp -r .shells ~/
 ```
 
-3. WayVR
+- WayVR
 ```
 cp -r wayvr ~/.config/
 ```
-
-4. alcom template\
- After launching ALCOM, can import from Packages & Templates > Templates > import Template
-
-5. playlist
- Import using an app that opens .m3a files
