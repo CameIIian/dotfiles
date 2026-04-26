@@ -39,7 +39,6 @@ pranaygp.vscode-css-peek@4.4.3
 redhat.vscode-xml@0.29.2
 redhat.vscode-yaml@1.22.0
 ritwickdey.liveserver@5.7.10
-shd101wyy.markdown-preview-enhanced@0.8.24
 streetsidesoftware.code-spell-checker@4.5.6
 tal7aouy.icons@3.8.0
 twxs.cmake@0.0.17
