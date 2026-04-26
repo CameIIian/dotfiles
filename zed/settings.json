@@ -1,0 +1,40 @@
+{
+    "base_keymap": "VSCode",
+    "vim_mode": false,
+
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "Catppuccin Mocha",
+    },
+    "icon_theme": "Catppuccin Mocha",
+
+    "ui_font_size": 16,
+    "ui_font_family": "MesloLGS NF",
+    "buffer_font_size": 13,
+    "buffer_font_family": "MesloLGS NF",
+
+    "tab_size": 4,
+    "ensure_final_newline_on_save": true,
+    "remove_trailing_whitespace_on_save": true,
+    "format_on_save": "on",
+    "formatter": "auto",
+
+    "enable_language_server": true,
+    "show_completions_on_input": false,
+    "show_completion_documentation": false,
+    "show_edit_predictions": false,
+
+    "inlay_hints": {
+        "enabled": true,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true,
+    },
+
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
+    },
+}
+
