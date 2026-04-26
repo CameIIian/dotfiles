@@ -73,6 +73,10 @@
             "source.fixAll.ruff": "always",
             "source.organizeImports.ruff": "always"
         }
-    }
-}
+    },
 
+    // ===== Marp =====
+    "markdown.marp.enable": true,
+    "markdown.marp.html": "default",
+    "markdown.marp.mathTypesetting": "mathjax"
+}
